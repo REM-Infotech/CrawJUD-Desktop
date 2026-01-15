@@ -25,7 +25,8 @@ onMounted(async () => {
 
 <style lang="css" scoped>
 .branding {
-  height: 100dvh;
+  position: fixed;
+  height: calc(100dvh - 60px);
   width: 100dvw;
   display: flex;
   flex-direction: column;
