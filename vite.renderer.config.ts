@@ -32,7 +32,7 @@ export default defineConfig({
       dirs: ["app/components"],
       deep: true,
       resolvers: [BootstrapVueNextResolver(), IconsResolve({ prefix: "Icon" })],
-      dts: "app/types/components.d.ts",
+      dts: "app/typings/components.d.ts",
     }),
     Icons({
       compiler: "vue3",
@@ -61,7 +61,7 @@ export default defineConfig({
       exclude: [],
 
       // where to generate the types
-      dts: "app/types/routes.d.ts",
+      dts: "app/typings/routes.d.ts",
 
       // how to generate the route name
       getRouteName: (routeNode) => getFileBasedRouteName(routeNode),
@@ -142,26 +142,28 @@ export default defineConfig({
       // Auto import for module exports under directories
       // by default it only scan one level of modules under the directory
       dirs: [
-        "./hooks",
-        "./composables", // only root modules
-        "./composables/**", // all nested modules
-        // ...
-
-        {
-          glob: "./hooks",
-          types: true, // enable import the types
-        },
-        {
-          glob: "./composables",
-          types: false, // If top level dirsScanOptions.types importing enabled, just only disable this directory
-        },
+        "./app/hooks",
+        "./app/composables", // only root modules
+        "./app/composables/**", // all nested modules
+        "./app/layout/**",
+        "./app/stores/**",
+        "./app/utils/**",
+        "./app/plugins/**",
+        // {
+        //   glob: "./hooks",
+        //   types: true, // enable import the types
+        // },
+        // {
+        //   glob: "./composables",
+        //   types: false, // If top level dirsScanOptions.types importing enabled, just only disable this directory
+        // },
         // ...
       ],
 
       // Filepath to generate corresponding .d.ts file.
       // Defaults to './auto-imports.d.ts' when `typescript` is installed locally.
       // Set `false` to disable.
-      dts: "app/types/imports.d.ts",
+      dts: "app/typings/imports.d.ts",
 
       // The mode for generating the .d.ts file.
       // 'overwrite': overwrite the whole existing .d.ts file with the new type definitions.
