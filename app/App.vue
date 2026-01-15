@@ -6,6 +6,7 @@ document.title = appName.value;
 
 <template>
   <BApp>
+    <Loading />
     <div class="content-app">
       <Navbar />
       <BContainer fluid class="route">

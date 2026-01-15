@@ -10,15 +10,24 @@ const load = useLoad();
 class authService {
   static async authUser(e: SubmitEvent) {
     e.preventDefault();
+    load.show();
+    let message = {
+      title: "Erro",
+      body: "Erro ao realizar login",
+      modelValue: 1500,
+    };
 
     try {
       const response = await api.post<AuthPayload>("/auth/login", FormLogin);
-
       if (response.status === 200) {
+        message.title = "Sucesso";
+        message.body = response.data.message;
+        router.push({ name: "/robot/listagem" });
       }
     } catch {}
 
-    router.push({ name: "/robot/listagem" });
+    toast.create(message);
+    load.hide();
   }
 }
 </script>
