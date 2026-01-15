@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Branding from "@/assets/img/Branding.png";
+
 const mouted = ref(false);
 const router = useRouter();
 onMounted(async () => {
@@ -9,7 +10,6 @@ onMounted(async () => {
       resolve(undefined);
     }, 150)
   );
-
   await new Promise((resolve) => setTimeout(resolve, 2000));
   router.push({ name: "/login" });
 });

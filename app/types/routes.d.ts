@@ -30,20 +30,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/configuracao': RouteRecordInfo<
-      '/configuracao',
-      '/configuracao',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/execucoes': RouteRecordInfo<
-      '/execucoes',
-      '/execucoes',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/login': RouteRecordInfo<
       '/login',
       '/login',
@@ -74,18 +60,6 @@ declare module 'vue-router/auto-routes' {
     'app/pages/index.vue': {
       routes:
         | '/'
-      views:
-        | never
-    }
-    'app/pages/configuracao.vue': {
-      routes:
-        | '/configuracao'
-      views:
-        | never
-    }
-    'app/pages/execucoes.vue': {
-      routes:
-        | '/execucoes'
       views:
         | never
     }

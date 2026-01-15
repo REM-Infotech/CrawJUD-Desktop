@@ -70,15 +70,15 @@ declare global {
   const toValue: typeof import('vue').toValue
   const triggerRef: typeof import('vue').triggerRef
   const unref: typeof import('vue').unref
-  const useAdminStore: typeof import('../stores/useAdminStore').default
+  const useAdminStore: typeof import("../stores/useAdminStore").default
   const useAttrs: typeof import('vue').useAttrs
-  const useBotForm: typeof import('../stores/useBotForm').default
+  const useBotForm: typeof import("../stores/useBotForm").default
   const useBotStore: typeof import('../stores/useBotStore').default
-  const useCounterStore: typeof import('../stores/counter').useCounterStore
-  const useCredencialFormStore: typeof import('../stores/useCredencialFormStore').default
+  const useCounterStore: typeof import("../stores/counter").useCounterStore
+  const useCredencialFormStore: typeof import("../stores/useCredencialFormStore").default
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
-  const useExecutionStore: typeof import('../stores/useExecutionStore').default
+  const useExecutionStore: typeof import("../stores/useExecutionStore").default
   const useId: typeof import('vue').useId
   const useLink: typeof import('vue-router').useLink
   const useLoad: typeof import('../stores/useLoad').default
@@ -88,9 +88,9 @@ declare global {
   const useRouter: typeof import('vue-router').useRouter
   const useSlots: typeof import('vue').useSlots
   const useTemplateRef: typeof import('vue').useTemplateRef
-  const useThemeStore: typeof import('../stores/useThemeStore').default
+  const useThemeStore: typeof import("../stores/useThemeStore").default
   const useToast: typeof import('../plugins/useToast').default
-  const useToasti: typeof import('../stores/useToasti').default
+  const useToasti: typeof import("../stores/useToasti").default
   const watch: typeof import('vue').watch
   const watchEffect: typeof import('vue').watchEffect
   const watchPostEffect: typeof import('vue').watchPostEffect
