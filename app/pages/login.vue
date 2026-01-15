@@ -35,7 +35,7 @@ class authService {
           body: "Login efetuado com sucesso!",
           value: 1000,
         });
-        useRouter().push({ name: "robot-listagem" });
+        useRouter().push({ name: "/robot/listagem" });
       }
     } catch (err) {
       let message = "Erro ao realizar login";

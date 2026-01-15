@@ -73,6 +73,7 @@
     "bootstrap-vue-next": "^0.42.0",
     "electron-squirrel-startup": "^1.0.1",
     "pinia": "^3.0.4",
+    "socket.io-client": "^4.8.3",
     "vue": "^3.5.26",
     "vue-router": "^4.6.4"
   }
