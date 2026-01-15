@@ -10,7 +10,7 @@ const { querySistema } = storeToRefs(useExecutionStore());
 const botStore = useBotStore();
 
 const { botNs, listar_credenciais } = botStore;
-const { listagem, queryBot, listagemBots } = storeToRefs(botStore);
+const { listagem, queryBot, listagemBots } = storeToRefs(useBotStore());
 const { current } = storeToRefs(useBotForm());
 const bots = useBotStore();
 
@@ -44,7 +44,7 @@ onBeforeMount(async () => {
 function execucoesFiltrar(bot: CrawJudBot) {
   querySistema.value = bot.display_name;
 
-  useRouter().push({ name: "execucoes" });
+  useRouter().push({ name: "/execucoes" });
 }
 
 function loadForm(bot: CrawJudBot) {
