@@ -25,9 +25,5 @@ interface Window {
 
   themeApi: ThemeApi;
   windowApi: WindowApi;
-  storageApi: StorageApi;
-  fileService: fileService;
-  cookieService: cookieService;
-  safeStorageApi: safeStorageApi;
   matchMedia: typeof window.matchMedia;
 }
