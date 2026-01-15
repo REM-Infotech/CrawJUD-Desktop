@@ -14,6 +14,9 @@ import vueDevTools from "vite-plugin-vue-devtools";
 
 import { BootstrapVueNextResolver } from "bootstrap-vue-next/resolvers";
 
+import IconsResolve from "unplugin-icons/resolver";
+import Icons from "unplugin-icons/vite";
+
 // https://vite.dev/config/
 export default defineConfig({
   resolve: {
@@ -26,8 +29,14 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
     Components({
-      resolvers: [BootstrapVueNextResolver()],
+      dirs: ["app/components"],
+      deep: true,
+      resolvers: [BootstrapVueNextResolver(), IconsResolve({ prefix: "Icon" })],
       dts: "app/types/components.d.ts",
+    }),
+    Icons({
+      compiler: "vue3",
+      autoInstall: true,
     }),
     VueRouter({
       // how and what folders to scan for files

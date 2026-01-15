@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useToast } from "bootstrap-vue-next";
+import IconMaterialSymbolsLight10kOutline from "~icons/material-symbols-light/10k-outline";
 const sistema = computed(() => import.meta.env.VITE_APP_NAME);
 const toast = useToast();
 const router = useRouter();
@@ -13,6 +14,8 @@ const HandleLogin = (e: Event) => {
 
   router.push({ name: "/home" });
 };
+
+const Icon = IconMaterialSymbolsLight10kOutline;
 </script>
 
 <template>

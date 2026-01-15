@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import Navbar from "@/components/HeaderView.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <BApp>

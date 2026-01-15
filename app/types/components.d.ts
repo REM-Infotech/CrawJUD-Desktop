@@ -27,6 +27,7 @@ declare module 'vue' {
     BNavItem: typeof import('bootstrap-vue-next/components/BNav')['BNavItem']
     BNavItemDropdown: typeof import('bootstrap-vue-next/components/BNav')['BNavItemDropdown']
     BRow: typeof import('bootstrap-vue-next/components/BContainer')['BRow']
+    Navbar: typeof import('./../components/navbar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
@@ -52,6 +53,7 @@ declare global {
   const BNavItem: typeof import('bootstrap-vue-next/components/BNav')['BNavItem']
   const BNavItemDropdown: typeof import('bootstrap-vue-next/components/BNav')['BNavItemDropdown']
   const BRow: typeof import('bootstrap-vue-next/components/BContainer')['BRow']
+  const Navbar: typeof import('./../components/navbar.vue')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
 }
