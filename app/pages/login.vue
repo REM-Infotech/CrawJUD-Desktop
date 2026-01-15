@@ -55,7 +55,6 @@ class authService {
 
 <style lang="css" scoped>
 .login-container {
-  margin-top: 7.5em;
   background-color: rgba(255, 255, 255, 0);
   box-shadow: none;
   display: flex;

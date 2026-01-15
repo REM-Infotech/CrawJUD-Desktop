@@ -60,9 +60,7 @@ try {
   Object.entries(exposes).forEach(([k, v]) =>
     contextBridge.exposeInMainWorld(k, v)
   );
-} catch (err) {
-  console.log(err);
-}
+} catch {}
 
 window.addEventListener("keypress", (e) => {
   if (e) {

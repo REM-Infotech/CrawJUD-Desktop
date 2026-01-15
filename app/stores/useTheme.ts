@@ -34,7 +34,6 @@ export default defineStore("themeStore", () => {
       "data-bs-theme",
       theme === "system" ? (isDark ? "dark" : "light") : theme
     );
-    console.log(document.documentElement);
     await callableThemes[theme]();
   }
 

@@ -21,8 +21,8 @@ document.title = appName.value;
 
 <style lang="css" scoped>
 .route {
+  margin-top: 50px;
   position: relative;
-  margin-top: 75px;
   width: calc(100% - 35px);
   height: calc(100% - 95px);
   padding: 15px;
