@@ -4,12 +4,10 @@ import { BrowserWindow, app } from "electron";
 import started from "electron-squirrel-startup";
 import path from "node:path";
 
-// Declaração das variáveis globais para evitar erro de valor não declarado
-
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit();
 }
+
 const appName = import.meta.env.VITE_APP_NAME;
 function createWindow() {
   const mainWindow = new BrowserWindow({
