@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { isAxiosError, type AxiosResponse } from "axios";
-
 const FormLogin = reactive({
   username: "",
   password: "",
@@ -13,44 +11,6 @@ const load = useLoad();
 class authService {
   static async authUser(e: SubmitEvent) {
     e.preventDefault();
-    load.show();
-
-    if (!FormLogin.username || !FormLogin.password) {
-      const message = !FormLogin.username
-        ? "Informe um usuário"
-        : "Informe a senha!";
-      load.hide();
-      toast.create({
-        title: "Erro",
-        body: message,
-      });
-      return;
-    }
-
-    try {
-      const response = await api.post("/auth/login", FormLogin);
-      if (response.status === 200) {
-        toast.create({
-          title: "Sucesso!",
-          body: "Login efetuado com sucesso!",
-          value: 1000,
-        });
-        useRouter().push({ name: "/robot/listagem" });
-      }
-    } catch (err) {
-      let message = "Erro ao realizar login";
-      if (isAxiosError(err) && err.response) {
-        message = (err.response as AxiosResponse<AuthenticationPayload>).data
-          .message;
-      }
-
-      toast.create({
-        title: "Erro",
-        body: message,
-      });
-    }
-    load.hide();
-
     router.push({ name: "/robot/listagem" });
   }
 }

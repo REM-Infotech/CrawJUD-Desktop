@@ -5,59 +5,7 @@ import Esaj from "@/components/img/esaj.vue";
 import Pje from "@/components/img/pje.vue";
 import Projudi from "@/components/img/projudi.vue";
 
-const modal = ref(false);
-const { querySistema } = storeToRefs(useExecutionStore());
-const botStore = useBotStore();
-
-const { botNs, listar_credenciais } = botStore;
-const { listagem, queryBot, listagemBots } = storeToRefs(useBotStore());
-const { current } = storeToRefs(useBotForm());
-const bots = useBotStore();
-
-onMounted(() => {
-  botNs.on("connect", () => {
-    const { current } = storeToRefs(useBotForm());
-    if (current) listar_credenciais(current.value);
-  });
-
-  botNs.emit("listagem", (data: { listagem: CrawJudBot[] }) => {
-    if (!data) return;
-
-    if (listagemBots.value.length > 0) {
-      if (data.listagem !== listagemBots.value) {
-        listagemBots.value = data.listagem;
-        return;
-      }
-    }
-    listagemBots.value = data.listagem;
-  });
-});
-
-onBeforeMount(async () => {
-  botStore.botNs.connect();
-  const configs: Record<string, string> = {};
-  for (const bot of bots.listagem) {
-    configs[bot.configuracao_form] = "ok";
-  }
-});
-
-function execucoesFiltrar(bot: CrawJudBot) {
-  querySistema.value = bot.display_name;
-
-  useRouter().push({ name: "/execucoes" });
-}
-
-function loadForm(bot: CrawJudBot) {
-  modal.value = true;
-  current.value = bot;
-}
-
-watch(modal, async (val) => {
-  if (!val) {
-    await new Promise((r) => setTimeout(r, 200));
-    current.value = {} as CrawJudBot;
-  }
-});
+const { listagem } = storeToRefs(useBotStore());
 
 const imgSistema: Record<sistemasRobos, Component> = {
   PROJUDI: Projudi,
@@ -73,11 +21,6 @@ const imgSistema: Record<sistemasRobos, Component> = {
 
 <template>
   <BContainer>
-    <BotForm v-model="modal" :bot="current" />
-    <BFormGroup class="bg-primary mb-5">
-      <BFormInput size="lg" placeholder="Filtre aqui" v-model="queryBot" />
-    </BFormGroup>
-
     <TransitionGroup tag="div" name="bots" class="row row-bots">
       <div
         class="col-lg-3 col-xl-3 col-md-3 col-sm-3 p-2"
@@ -97,12 +40,8 @@ const imgSistema: Record<sistemasRobos, Component> = {
             </span>
           </div>
           <div class="card-footer d-flex gap-3">
-            <BButton class="button-execute" @click="loadForm(bot)">
-              Executar
-            </BButton>
-            <BButton class="button-bot" @click="execucoesFiltrar(bot)" disabled>
-              Ver Logs
-            </BButton>
+            <BButton class="button-execute"> Executar </BButton>
+            <BButton class="button-bot" disabled> Ver Logs </BButton>
           </div>
         </div>
       </div>
