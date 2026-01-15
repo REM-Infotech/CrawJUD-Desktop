@@ -14,6 +14,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BButton: typeof import('bootstrap-vue-next/components/BButton')['BButton']
     BCollapse: typeof import('bootstrap-vue-next/components/BCollapse')['BCollapse']
+    BContainer: typeof import('bootstrap-vue-next/components/BContainer')['BContainer']
     BDropdownItem: typeof import('bootstrap-vue-next/components/BDropdown')['BDropdownItem']
     BFormInput: typeof import('bootstrap-vue-next/components/BFormInput')['BFormInput']
     BNavbar: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbar']
@@ -36,6 +37,7 @@ declare module 'vue' {
 declare global {
   const BButton: typeof import('bootstrap-vue-next/components/BButton')['BButton']
   const BCollapse: typeof import('bootstrap-vue-next/components/BCollapse')['BCollapse']
+  const BContainer: typeof import('bootstrap-vue-next/components/BContainer')['BContainer']
   const BDropdownItem: typeof import('bootstrap-vue-next/components/BDropdown')['BDropdownItem']
   const BFormInput: typeof import('bootstrap-vue-next/components/BFormInput')['BFormInput']
   const BNavbar: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbar']

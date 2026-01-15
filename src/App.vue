@@ -8,16 +8,27 @@ import { RouterView } from "vue-router";
   <BApp>
     <div class="content-app">
       <Navbar />
-      <RouterView v-slot="{ Component }">
-        <Transition name="page" mode="out-in">
-          <component :is="Component" />
-        </Transition>
-      </RouterView>
+      <BContainer fluid class="route">
+        <RouterView v-slot="{ Component }">
+          <Transition name="page" mode="out-in">
+            <component :is="Component" />
+          </Transition>
+        </RouterView>
+      </BContainer>
     </div>
   </BApp>
 </template>
 
 <style lang="css" scoped>
+.route {
+  margin-top: 25px;
+  width: calc(100% - 35px);
+  height: calc(100% - 95px);
+  padding: 15px;
+  background-color: rgba(173, 172, 172, 0.308);
+  border-radius: 5px;
+}
+
 .content-app {
   width: 100dvw;
   height: 100dvh;
