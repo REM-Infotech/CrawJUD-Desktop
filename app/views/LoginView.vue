@@ -1,24 +1,70 @@
 <script setup lang="ts">
 import { computed } from "vue";
-
 const sistema = computed(() => import.meta.env.VITE_APP_NAME);
 </script>
 
 <template>
-  <div class="card card-login ms-auto me-auto">
-    <div class="d-flex justify-content-center mt-2">
-      <span class="fw-bold fs-5"> Login {{ sistema }} </span>
-    </div>
-    <div class="card-body">
-      <BRow> </BRow>
-    </div>
+  <div class="card-login-page">
+    <BRow align-content="center" no-gutters style="height: 100%">
+      <BCol sm="5" md="5" lg="5" xl="5" xxl="5" class="bg-white">
+        <form class="card-login">
+          <div class="card" style="width: 55%">
+            <div class="card-header">login {{ sistema }}</div>
+            <div class="card-body login-form">
+              <BFormGroup class="mb-3 mt-5" label="Login" floating>
+                <BFormInput placeholder="Seu login" />
+              </BFormGroup>
+              <BFormGroup class="mb-5" label="Password" floating>
+                <BFormInput placeholder="Sua Senha" />
+              </BFormGroup>
+            </div>
+            <div class="card-footer d-flex flex-column">
+              <BButton variant="success">
+                <span class="fw-bold"> Login </span>
+              </BButton>
+            </div>
+          </div>
+        </form>
+      </BCol>
+      <BCol sm="7" md="7" lg="7" xl="7" xxl="7">
+        <img class="img-login w-100" src="/pexelsmaurizio.jpg" alt="" />
+      </BCol>
+    </BRow>
   </div>
 </template>
 <style lang="css" scoped>
+.card-login-page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.img-login {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
 .card-login {
   box-sizing: border-box;
-  margin-top: 7.5rem;
-  height: 65%;
-  width: 27.5%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.login-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>
