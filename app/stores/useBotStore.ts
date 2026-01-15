@@ -1,8 +1,8 @@
 export default defineStore("useBotStore", () => {
   const queryBot = ref("");
-  const listagemBots: Ref<CrawJudBot[]> = ref([]);
+  const listagemBots: Ref<BotCrawJUD[]> = ref([]);
   const queryLower = computed(() => queryBot.value.toLowerCase());
-  const listagem: ComputedRef<CrawJudBot[]> = computed(() =>
+  const listagem: ComputedRef<BotCrawJUD[]> = computed(() =>
     listagemBots.value.filter(
       (item) =>
         item.display_name.toLowerCase().includes(queryLower.value) ||
@@ -10,9 +10,20 @@ export default defineStore("useBotStore", () => {
     )
   );
 
+  async function load() {
+    try {
+      const response = await api.post<BotPayload>("/bot/listagem");
+
+      if (response.data && response.data.listagem) {
+        listagemBots.value = response.data.listagem;
+      }
+    } catch {}
+  }
+
   return {
     listagemBots,
     listagem,
     queryBot,
+    load,
   };
 });

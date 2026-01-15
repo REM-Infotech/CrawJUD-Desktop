@@ -3,12 +3,25 @@
  */
 
 type FileInput = File[] | File | undefined;
-type sistemasRobos = "PROJUDI" | "ESAJ" | "ELAW" | "JUSDS" | "PJE" | "CAIXA" | "TJDFT" | "CSI";
+type sistemasRobos =
+  | "PROJUDI"
+  | "ESAJ"
+  | "ELAW"
+  | "JUSDS"
+  | "PJE"
+  | "CAIXA"
+  | "TJDFT"
+  | "CSI";
 type Contadores = "total" | "sucessos" | "erros" | "restantes";
 type CertificadoFile = (File & { name: `${string}.pfx` }) | null;
 type KbdxFile = (File & { name: `${string}.kdbx` }) | null;
 type StatusBot = "Inicializando" | "Em Execução" | "Finalizado";
-type ConfigForm = "file_auth" | "multiple_files" | "only_auth" | "only_file" | "proc_parte";
+type ConfigForm =
+  | "file_auth"
+  | "multiple_files"
+  | "only_auth"
+  | "only_file"
+  | "proc_parte";
 
 type Execucao = {
   Id: number;
@@ -21,7 +34,7 @@ type Execucao = {
 
 type Execucoes = Execucao[];
 
-interface CrawJudBot {
+interface BotCrawJUD {
   Id: number;
   configuracao_form: ConfigForm;
   display_name: string;
@@ -31,20 +44,7 @@ interface CrawJudBot {
 }
 
 interface BotPayload {
-  listagem: CrawJudBot[];
-}
-interface CredenciaisSelect {
-  value: number | null | undefined;
-  text: string;
-}
-interface CredenciaisPayload {
-  credenciais: CredenciaisSelect[];
-}
-interface StartBotPayload {
-  id_execucao: string;
-  title: string;
-  message: string;
-  status: MessageType;
+  listagem: BotCrawJUD[];
 }
 
 interface Message {
