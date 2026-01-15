@@ -65,7 +65,7 @@ const closeApp = async () => {
 <style lang="css" scoped>
 .heading {
   width: 100%;
-  position: fixed;
+  height: 55px;
 }
 
 .navbar-anim-enter-active,

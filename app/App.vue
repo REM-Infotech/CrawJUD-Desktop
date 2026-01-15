@@ -1,5 +1,6 @@
 <script setup lang="ts">
 useTheme().loadTheme();
+
 const appName = computed(() => import.meta.env.VITE_APP_NAME);
 const offcanvas = useOffcanvas();
 
@@ -31,9 +32,8 @@ onMounted(() => {
 .route {
   position: relative;
   width: calc(100% - 35px);
-  height: calc(100%);
+  height: calc(100% - 60px);
   border-radius: 5px;
-  margin-top: 60px;
 }
 
 .content-app {
