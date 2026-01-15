@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useToast } from "bootstrap-vue-next";
-import { computed } from "vue";
-import { useRouter } from "vue-router";
 const sistema = computed(() => import.meta.env.VITE_APP_NAME);
 const toast = useToast();
 const router = useRouter();
