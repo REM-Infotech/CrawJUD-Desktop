@@ -13,3 +13,8 @@ interface ThemeApi {
   toggleLightMode: () => Promise<void>;
   currentPreset: () => Promise<Theme>;
 }
+
+interface fileDialogApi {
+  openFileXlsx: () => Promise<FileObject | undefined>;
+  openFiles: () => Promise<FileObject[] | undefined>;
+}

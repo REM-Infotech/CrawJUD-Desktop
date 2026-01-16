@@ -6,7 +6,7 @@
 type Numberish = string | number;
 type AuthReturn = Promise<AuthResult>;
 type elementRef = Ref<Element | ComponentPublicInstance | null>;
-
+type PromieVoid = Promise<unknown>;
 interface cookieApp {
   url: string;
   name?: string;
@@ -22,7 +22,7 @@ interface cookieApp {
 interface Window {
   $: typeof jQuery;
   jQuery: typeof jQuery;
-
+  fileDialogApi: fileDialogApi;
   themeApi: ThemeApi;
   windowApi: WindowApi;
   matchMedia: typeof window.matchMedia;

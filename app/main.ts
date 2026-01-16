@@ -1,4 +1,5 @@
 import IpcApp from "@/ipc";
+import IpcFile from "@/ipc/IpcFile";
 import IpcTheme from "@/ipc/IpcTheme";
 import { BrowserWindow, app } from "electron";
 import started from "electron-squirrel-startup";
@@ -34,8 +35,9 @@ function createWindow() {
       path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
     );
   }
-  IpcApp(mainWindow);
   IpcTheme();
+  IpcApp(mainWindow);
+  IpcFile(mainWindow);
 }
 
 app.on("ready", createWindow);
