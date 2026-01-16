@@ -140,7 +140,7 @@ body {
   min-width: 100dvw;
   line-height: 1.5;
   color: var(--color-primary);
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(85, 85, 85, 0.24);
   overflow: hidden;
 }
 
