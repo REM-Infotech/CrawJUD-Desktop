@@ -4,9 +4,10 @@ import Elaw from "@/components/elaw.vue";
 import Esaj from "@/components/esaj.vue";
 import Pje from "@/components/pje.vue";
 import Projudi from "@/components/projudi.vue";
+import FormBot from "@/views/FormBot.vue";
 
 const botStore = useBotStore();
-const { listagem } = storeToRefs(botStore);
+const { listagem, formBot } = storeToRefs(botStore);
 const imgSistema: Record<sistemasRobos, Component> = {
   PROJUDI: Projudi,
   ESAJ: Esaj,
@@ -25,6 +26,7 @@ onMounted(async () => {
 
 <template>
   <BContainer>
+    <FormBot />
     <TransitionGroup tag="div" name="bots" class="row row-bots">
       <div
         class="col-lg-3 col-xl-3 col-md-3 col-sm-3 p-2"
@@ -44,7 +46,9 @@ onMounted(async () => {
             </span>
           </div>
           <div class="card-footer d-flex gap-3">
-            <BButton class="button-execute"> Executar </BButton>
+            <BButton @click="formBot = !formBot" class="button-execute">
+              Executar
+            </BButton>
             <BButton class="button-bot" disabled> Ver Logs </BButton>
           </div>
         </div>
