@@ -10,7 +10,6 @@ export default defineStore("useToastStore", () => {
   ) {
     showToast.value = true;
     if (options) {
-      console.log(options);
       toastContent.title = options.title;
       toastContent.body = options.body;
       toastContent.timeout = options.timeout;
