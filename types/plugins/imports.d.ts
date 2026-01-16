@@ -7,6 +7,8 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue').EffectScope
+  const FileUploader: typeof import('../../app/utils/FileUploader').default
+  const Utils: typeof import('../../app/utils/Utils').default
   const acceptHMRUpdate: typeof import('pinia').acceptHMRUpdate
   const api: typeof import('../../app/utils/api').default
   const axios: typeof import('axios').default
@@ -111,6 +113,8 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly FileUploader: UnwrapRef<typeof import('../../app/utils/FileUploader')['default']>
+    readonly Utils: UnwrapRef<typeof import('../../app/utils/Utils')['default']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly api: UnwrapRef<typeof import('../../app/utils/api')['default']>
     readonly axios: UnwrapRef<typeof import('axios')['default']>

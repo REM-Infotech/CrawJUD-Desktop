@@ -2,11 +2,13 @@ export default defineStore("useBotStore", () => {
   const queryBot = ref("");
   const formBotModal = ref(false);
   const selectedBot = ref<BotCrawJUD>();
+  const seed = ref("");
+
   const listagemBots: Ref<BotCrawJUD[]> = ref([]);
   const credenciais = ref<CredenciaisSelect[]>([
     { value: null, text: "Carregando" },
   ]);
-
+  const progressBarValue = ref(0);
   const queryLower = computed(() => queryBot.value.toLowerCase());
   const formBot = reactive<{
     Xlsx: File | null;
@@ -52,11 +54,13 @@ export default defineStore("useBotStore", () => {
     } catch {}
   }
 
-  watch(selectedBot, async (newValue) => {
+  watch(formBotModal, async (newValue) => {
     if (newValue) {
+      seed.value = crypto.randomUUID();
+
       try {
         const response = await api.get<CredenciaisPayload>(
-          `/bot/listagem-credenciais/${newValue.sistema}`
+          `/bot/listagem-credenciais/${selectedBot.value?.sistema}`
         );
 
         if (response.status === 200) {
@@ -79,7 +83,6 @@ export default defineStore("useBotStore", () => {
       formBot.Xlsx = null;
       formBot.credencial = null;
       credenciais.value = [{ value: null, text: "Carregando" }];
-      selectedBot.value = null as unknown as BotCrawJUD;
     }
   });
 
@@ -93,6 +96,8 @@ export default defineStore("useBotStore", () => {
     openFileXlsx,
     openFiles,
     formBot,
+    seed,
     credenciais,
+    progressBarValue,
   };
 });

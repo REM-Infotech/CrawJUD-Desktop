@@ -23,6 +23,8 @@ function createWindow() {
     fullscreenable: false,
     webPreferences: {
       nodeIntegration: false,
+      sandbox: true,
+      contextIsolation: true,
       devTools: !app.isPackaged,
       preload: path.join(__dirname, "preload.js"),
     },
