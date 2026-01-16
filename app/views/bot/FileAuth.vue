@@ -1,28 +1,12 @@
 <script setup lang="ts">
 const botstore = useBotStore();
 const { formBot, credenciais } = storeToRefs(botstore);
-
-watch(
-  () => formBot.value.Xlsx,
-  async (newValue) => {
-    if (newValue) {
-      await FileUploader().uploadFile(newValue);
-    }
-  }
-);
 </script>
 
 <template>
   <BContainer>
-    <BFormGroup label="Credencial" class="mb-3">
-      <BFormSelect
-        :options="credenciais"
-        v-model="formBot.credencial"
-      ></BFormSelect>
-    </BFormGroup>
-    <BFormGroup label="Planilha de execução" class="mb-3">
-      <BFormFile @click="botstore.openFileXlsx" v-model="formBot.Xlsx" />
-    </BFormGroup>
+    <CredenciaisInput />
+    <Xlsxinput />
   </BContainer>
 </template>
 

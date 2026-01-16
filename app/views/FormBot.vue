@@ -5,7 +5,14 @@ import MultipleFiles from "./bot/MultipleFiles.vue";
 const botstore = useBotStore();
 const load = useLoad();
 
-const { formBotModal, selectedBot, formBot } = storeToRefs(botstore);
+const {
+  formBotModal,
+  selectedBot,
+  formBot,
+  uploadingFiles,
+  formConfirmed,
+  confirmForm,
+} = storeToRefs(botstore);
 const FormSetups = {
   only_auth: MultipleFiles,
   file_auth: FileAuth,
@@ -13,6 +20,10 @@ const FormSetups = {
   only_file: MultipleFiles,
   proc_parte: MultipleFiles,
 };
+
+const submitDesabilitado = computed(
+  () => !formConfirmed.value || uploadingFiles.value
+);
 
 const FormComponent = computed(() => {
   if (selectedBot.value) {
@@ -64,7 +75,7 @@ async function handleSubmit(e: Event) {
 <template>
   <form>
     <BModal
-      footer-class="d-flex flex-column w-100"
+      footer-class="d-flex gap-3 flex-column w-100 align-items-start"
       size="lg"
       centered
       @hide="formBotModal = false"
@@ -76,16 +87,26 @@ async function handleSubmit(e: Event) {
         </span>
       </template>
       <template #default>
-        <div style="height: 480px">
+        <div style="min-height: 480px">
           <component :is="FormComponent" />
         </div>
       </template>
       <template #footer>
+        <div class="ps-3">
+          <BFormCheckbox
+            :value="true"
+            :unchecked-value="false"
+            v-model="confirmForm"
+          >
+            Confirmo que os dados inseridos estão corretos
+          </BFormCheckbox>
+        </div>
         <BButton
+          :disabled="submitDesabilitado"
           @click="handleSubmit"
           size="lg"
-          variant="success"
-          style="width: 360px"
+          :variant="submitDesabilitado ? 'outline-success' : 'success'"
+          style="width: 100%"
         >
           Iniciar execução
         </BButton>

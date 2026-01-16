@@ -3,8 +3,14 @@ export default defineStore("useBotStore", () => {
   const formBotModal = ref(false);
   const selectedBot = ref<BotCrawJUD>();
   const seed = ref("");
-
+  const currentFileUpload = ref();
   const listagemBots: Ref<BotCrawJUD[]> = ref([]);
+  const isUploadFile = ref();
+
+  const confirmForm = ref(false);
+  const uploadingFiles = computed(() => isUploadFile.value);
+  const formConfirmed = computed(() => confirmForm.value);
+
   const credenciais = ref<CredenciaisSelect[]>([
     { value: null, text: "Carregando" },
   ]);
@@ -87,6 +93,11 @@ export default defineStore("useBotStore", () => {
   });
 
   return {
+    confirmForm,
+    uploadingFiles,
+    formConfirmed,
+    isUploadFile,
+    currentFileUpload,
     selectedBot,
     formBotModal,
     listagemBots,
