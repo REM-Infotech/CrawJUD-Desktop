@@ -21,16 +21,26 @@ const FormComponent = computed(() => {
 </script>
 
 <template>
-  <BModal size="xl" @hide="formBotModal = false" v-model="formBotModal">
-    <template #header>
-      <span class="fw-bold fs-4">
-        {{ selectedBot?.display_name }}
-      </span>
-    </template>
-    <template #default>
-      <BForm>
+  <BForm @submit="(e: Event) => e.preventDefault()">
+    <BModal
+      footer-class="d-flex flex-column w-100"
+      size="xl"
+      @hide="formBotModal = false"
+      v-model="formBotModal"
+    >
+      <template #header>
+        <span class="fw-bold fs-4">
+          {{ selectedBot?.display_name }}
+        </span>
+      </template>
+      <template #default>
         <component :is="FormComponent" />
-      </BForm>
-    </template>
-  </BModal>
+      </template>
+      <template #footer>
+        <BButton type="submit" size="lg" variant="success" style="width: 360px">
+          Iniciar execução
+        </BButton>
+      </template>
+    </BModal>
+  </BForm>
 </template>
