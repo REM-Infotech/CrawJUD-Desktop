@@ -7,11 +7,13 @@ const arquivoSelecionado = computed(() => arquivo.value);
 
 <template>
   <BContainer>
-    <BFormGroup label="Planilha" class="mb-3">
+    <BFormGroup label="Credencial" class="mb-3">
+      <BFormSelect></BFormSelect>
+    </BFormGroup>
+    <BFormGroup label="Planilha de execução" class="mb-3">
       <BFormFile @click="botstore.openFileXlsx" v-model="formBot.Xlsx" />
     </BFormGroup>
-
-    <div id="anexos" class="border border-1 rounded rounded-3 p-3">
+    <div id="anexos" class="border border-1 rounded rounded-3 p-3 mb-3">
       <BFormGroup label="Outros Arquivos" class="mb-3">
         <BFormFile
           @click="botstore.openFiles"
@@ -23,7 +25,7 @@ const arquivoSelecionado = computed(() => arquivo.value);
         tag="ul"
         name="list"
         class="list-group list-group-numbered"
-        style="max-height: 300px; height: 100%; overflow-y: scroll"
+        style="max-height: 150px; height: 100%; overflow-y: scroll"
       >
         <li
           v-for="(file, idx) in formBot.Anexos"
