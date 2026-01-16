@@ -1,0 +1,3 @@
+interface CredenciaisPayload {
+  credenciais: CredenciaisSelect[];
+}

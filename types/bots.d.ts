@@ -2,6 +2,11 @@
  * Representa os sistemas judiciais suportados.
  */
 
+interface CredenciaisSelect {
+  value: number | null | undefined;
+  text: string;
+}
+
 type FileInput = File[] | File | undefined;
 type sistemasRobos =
   | "PROJUDI"

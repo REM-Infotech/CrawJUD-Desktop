@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const botstore = useBotStore();
-const { formBot } = storeToRefs(botstore);
+const { formBot, credenciais } = storeToRefs(botstore);
 const arquivo = ref<File | null>(null);
 const arquivoSelecionado = computed(() => arquivo.value);
 </script>
@@ -8,7 +8,10 @@ const arquivoSelecionado = computed(() => arquivo.value);
 <template>
   <BContainer>
     <BFormGroup label="Credencial" class="mb-3">
-      <BFormSelect></BFormSelect>
+      <BFormSelect
+        :options="credenciais"
+        v-model="formBot.credencial"
+      ></BFormSelect>
     </BFormGroup>
     <BFormGroup label="Planilha de execução" class="mb-3">
       <BFormFile @click="botstore.openFileXlsx" v-model="formBot.Xlsx" />
