@@ -2,7 +2,7 @@
 import { contextBridge, ipcRenderer } from "electron";
 
 const windowApi = {
-  loadPreferences: (): PromieVoid => ipcRenderer.invoke("load-preferences"),
+  loadPreferences: (): PromiseVoid => ipcRenderer.invoke("load-preferences"),
   closeWindow: (): void => ipcRenderer.send("close-window"),
   maximizeWindow: (): void => ipcRenderer.send("maximize-window"),
   minimizeWindow: (): void => ipcRenderer.send("minimize-window"),
@@ -17,12 +17,13 @@ const FileDialogApi: fileDialogApi = {
 };
 
 const themeApi = {
-  toggleDarkMode: (): PromieVoid => ipcRenderer.invoke("dark-mode:toggle-dark"),
-  toggleToSystem: (): PromieVoid =>
+  toggleDarkMode: (): PromiseVoid =>
+    ipcRenderer.invoke("dark-mode:toggle-dark"),
+  toggleToSystem: (): PromiseVoid =>
     ipcRenderer.invoke("dark-mode:toggle-system"),
-  toggleLightMode: (): PromieVoid =>
+  toggleLightMode: (): PromiseVoid =>
     ipcRenderer.invoke("dark-mode:toggle-light"),
-  currentPreset: (): PromieVoid =>
+  currentPreset: (): PromiseVoid =>
     ipcRenderer.invoke("dark-mode:current-preset"),
 };
 
@@ -42,7 +43,7 @@ try {
     fileService: fileService,
   };
   Object.entries(exposes).forEach(([k, v]) =>
-    contextBridge.exposeInMainWorld(k, v)
+    contextBridge.exposeInMainWorld(k, v),
   );
 } catch {}
 
