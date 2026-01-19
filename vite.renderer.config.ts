@@ -1,3 +1,4 @@
+// oxlint-disable no-unused-vars
 import { fileURLToPath, URL } from "node:url";
 
 // unplugin

@@ -1,25 +1,27 @@
+import { resolve } from "path";
+
 import { MakerDeb } from "@electron-forge/maker-deb";
 import { MakerRpm } from "@electron-forge/maker-rpm";
 import { MakerZIP } from "@electron-forge/maker-zip";
-import { FusesPlugin } from "@electron-forge/plugin-fuses";
 import { VitePlugin } from "@electron-forge/plugin-vite";
+
+import { AutoUnpackNativesPlugin } from "@electron-forge/plugin-auto-unpack-natives";
+
 import type { ForgeConfig } from "@electron-forge/shared-types";
-import { FuseV1Options, FuseVersion } from "@electron/fuses";
+
 import SquirrelMaker from "./makers/SquirrelMaker";
 import WixMaker from "./makers/WixMaker";
+
+const ROOT = process.cwd();
+
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
+    osxSign: {},
+    icon: resolve(ROOT, "app/assets/img/crawjud2.ico"),
   },
-  rebuildConfig: {},
-  makers: [
-    WixMaker,
-    SquirrelMaker,
-    new MakerZIP({}, ["darwin"]),
-    new MakerRpm({}),
-    new MakerDeb({}),
-  ],
   plugins: [
+    new AutoUnpackNativesPlugin({}),
     new VitePlugin({
       // `build` can specify multiple entry builds, which can be Main process, Preload scripts, Worker process, etc.
       // If you are familiar with Vite configuration, it will look really familiar.
@@ -43,17 +45,13 @@ const config: ForgeConfig = {
         },
       ],
     }),
-    // Fuses are used to enable/disable various Electron functionality
-    // at package time, before code signing the srclication
-    new FusesPlugin({
-      version: FuseVersion.V1,
-      [FuseV1Options.RunAsNode]: false,
-      [FuseV1Options.EnableCookieEncryption]: true,
-      [FuseV1Options.EnableNodeOptionsEnvironmentVariable]: false,
-      [FuseV1Options.EnableNodeCliInspectArguments]: false,
-      [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
-      [FuseV1Options.OnlyLoadAppFromAsar]: true,
-    }),
+  ],
+  makers: [
+    WixMaker,
+    SquirrelMaker,
+    new MakerZIP({}, ["darwin"]),
+    new MakerDeb({}, ["linux"]),
+    new MakerRpm({}, ["linux"]),
   ],
 };
 
