@@ -125,6 +125,8 @@ export default defineStore(
     };
   },
   {
-    persist: true,
+    persist: {
+      storage: localStorage,
+    },
   },
 );

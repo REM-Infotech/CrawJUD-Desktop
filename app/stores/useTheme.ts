@@ -67,6 +67,8 @@ export default defineStore(
     return { current, loadTheme, toggleTheme, themes, rowTheme };
   },
   {
-    persist: true,
+    persist: {
+      storage: localStorage,
+    },
   },
 );

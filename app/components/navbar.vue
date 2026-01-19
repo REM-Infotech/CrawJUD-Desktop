@@ -10,9 +10,9 @@ import MaterialSymbolsLightSunnyOutline from "~icons/material-symbols-light/sunn
 const route = useRoute();
 const isLoaded = computed(() => route.name !== "/");
 const offcanvas = useOffcanvas();
-const { toggleTheme } = useThemeStore();
+const { toggleTheme } = useTheme();
 
-const { current } = storeToRefs(useThemeStore());
+const { current } = storeToRefs(useTheme());
 
 const minimizeApp = async () => {
   await window.windowApi.minimizeWindow();

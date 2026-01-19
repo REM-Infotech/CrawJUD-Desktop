@@ -209,7 +209,6 @@ declare module 'vue' {
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
     readonly useTheme: UnwrapRef<typeof import('../../app/stores/useTheme')['default']>
-    readonly useThemeStore: UnwrapRef<typeof import('../../app/stores/useThemeStore')['default']>
     readonly useToast: UnwrapRef<typeof import('../../app/plugins/useToast')['default']>
     readonly userStore: UnwrapRef<typeof import('../../app/stores/userStore')['default']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
