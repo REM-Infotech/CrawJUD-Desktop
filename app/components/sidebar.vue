@@ -37,7 +37,7 @@ const handleLogout = async () => {
     aria-labelledby="offcanvasCrawjudLabel"
   >
     <div
-      class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+      class="d-flex flex-column flex-shrink-0 p-3 text-body-emphasis bg-body-secondary"
       style="width: 280px; height: 100%"
     >
       <a
@@ -48,7 +48,7 @@ const handleLogout = async () => {
             offcanvas.hide();
           }
         "
-        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-body-emphasis text-decoration-none"
       >
         <img :src="CrawJUD2" class="me-2" alt="" style="width: 40px" />
         <span class="fs-2">CrawJUD</span>
@@ -57,7 +57,7 @@ const handleLogout = async () => {
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
           <RouterLink
-            class="nav-link text-white text-decoration-none"
+            class="nav-link text-body-emphasis text-decoration-none"
             :to="{ name: '/robot/listagem' }"
             aria-current="page"
             active-class="active"
@@ -72,7 +72,7 @@ const handleLogout = async () => {
         </li>
         <li class="nav-item">
           <RouterLink
-            class="nav-link text-white text-decoration-none"
+            class="nav-link text-body-emphasis text-decoration-none"
             :to="{ name: '/execucoes' }"
             aria-current="page"
             active-class="active"
@@ -90,7 +90,7 @@ const handleLogout = async () => {
       <div class="dropdown">
         <a
           href="#"
-          class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+          class="d-flex align-items-center text-body-emphasis text-decoration-none dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >

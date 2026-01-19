@@ -122,8 +122,8 @@
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE e Edge antigo */
   transition:
-    color 0.2s,
-    background-color 0.2s;
+    color 0.5s,
+    background-color 0.5s;
 }
 
 html {

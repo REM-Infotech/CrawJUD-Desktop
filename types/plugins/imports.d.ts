@@ -98,6 +98,7 @@ declare global {
   const useSlots: typeof import('vue').useSlots
   const useTemplateRef: typeof import('vue').useTemplateRef
   const useTheme: typeof import('../../app/stores/useTheme').default
+  const useThemeStore: typeof import('../../app/stores/useThemeStore').default
   const useToast: typeof import('../../app/plugins/useToast').default
   const userStore: typeof import('../../app/stores/userStore').default
   const watch: typeof import('vue').watch
@@ -208,6 +209,7 @@ declare module 'vue' {
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
     readonly useTheme: UnwrapRef<typeof import('../../app/stores/useTheme')['default']>
+    readonly useThemeStore: UnwrapRef<typeof import('../../app/stores/useThemeStore')['default']>
     readonly useToast: UnwrapRef<typeof import('../../app/plugins/useToast')['default']>
     readonly userStore: UnwrapRef<typeof import('../../app/stores/userStore')['default']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>

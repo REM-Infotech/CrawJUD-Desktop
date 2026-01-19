@@ -35,13 +35,13 @@ onMounted(async () => {
       >
         <div class="card">
           <div class="card-header">
-            <span class="text-white fw-bold titulo-robo">
+            <span class="text-body-emphasis fw-bold titulo-robo">
               {{ bot.display_name }}
             </span>
           </div>
           <component :is="imgSistema[bot.sistema]" />
           <div class="card-body">
-            <span class="text-white text-desc">
+            <span class="text-body-emphasis text-desc">
               {{ bot.descricao }}
             </span>
           </div>
