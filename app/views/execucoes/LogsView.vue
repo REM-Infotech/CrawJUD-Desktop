@@ -55,14 +55,14 @@ const classLogs: Record<MessageType, string> = {
   log: "border border-2 border-info",
   success: "border border-2 border-success",
   error: "border border-2 border-danger",
-  info: "border border-2 border-primary",
+  info: "border border-2 border-warning",
   warning: "border border-2 border-warning",
 };
 
 const VariantLogs: Record<MessageType, keyof BaseColorVariant> = {
   success: "success",
   error: "danger",
-  info: "primary",
+  info: "warning",
   log: "info",
   warning: "warning",
 };

@@ -8,7 +8,7 @@ onMounted(async () => {
     setTimeout(() => {
       mouted.value = true;
       resolve(undefined);
-    }, 150)
+    }, 500),
   );
   await new Promise((resolve) => setTimeout(resolve, 2000));
   router.push({ name: "/login" });
