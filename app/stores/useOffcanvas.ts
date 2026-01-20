@@ -9,19 +9,25 @@ export default defineStore("useOffcanvas", () => {
 
   function toggle() {
     if (state.value) {
-      state.value.toggle();
+      if (route.name && route.name !== "/" && route.name !== "/login") {
+        state.value.toggle();
+      }
     }
   }
 
   function show() {
     if (state.value) {
-      state.value.show();
+      if (route.name && route.name !== "/" && route.name !== "/login") {
+        state.value.show();
+      }
     }
   }
 
   function hide() {
     if (state.value) {
-      state.value.hide();
+      if (route.name && route.name !== "/" && route.name !== "/login") {
+        state.value.hide();
+      }
     }
   }
 
