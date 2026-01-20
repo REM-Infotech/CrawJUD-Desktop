@@ -1,7 +1,18 @@
 class FileDialogService {
   static setupFile(file: FileObject) {
-    const fileBytes = atob(file.content);
-    const fileObject = new File([fileBytes], file.name, {
+    // Converte o conteúdo base64 para um Uint8Array sem usar atob
+    function base64ToUint8Array(base64: string): Uint8Array {
+      const binaryString = window.atob(base64.replace(/[\r\n]+/g, ""));
+      const len = binaryString.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      return bytes;
+    }
+    const fileBytes = base64ToUint8Array(file.content);
+    const buff = fileBytes.buffer as ArrayBuffer;
+    const fileObject = new File([buff], file.name, {
       type: file.type,
     });
 

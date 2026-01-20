@@ -36,7 +36,9 @@ export default defineStore(
               }
             }
           }
-        } catch {}
+        } catch {
+          //
+        }
       }
     }
 

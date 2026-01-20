@@ -64,8 +64,6 @@ declare global {
   const readonly: typeof import('vue').readonly
   const ref: typeof import('vue').ref
   const resolveComponent: typeof import('vue').resolveComponent
-  const route: typeof import('../../app/utils/route').default
-  const router: typeof import('../../app/utils/router').default
   const setActivePinia: typeof import('pinia').setActivePinia
   const setMapStoreSuffix: typeof import('pinia').setMapStoreSuffix
   const shallowReactive: typeof import('vue').shallowReactive
@@ -85,7 +83,6 @@ declare global {
   const useBotStore: typeof import('../../app/stores/useBotStore').default
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
-  const useExecutionStore: typeof import('../../app/stores/useExecutionStore').default
   const useId: typeof import('vue').useId
   const useLink: typeof import('vue-router').useLink
   const useLoad: typeof import('../../app/stores/useLoad').default
@@ -94,11 +91,9 @@ declare global {
   const useOffcanvas: typeof import('../../app/stores/useOffcanvas').default
   const useRoute: typeof import('vue-router').useRoute
   const useRouter: typeof import('vue-router').useRouter
-  const useSidebar: typeof import('../../app/stores/useSidebar').default
   const useSlots: typeof import('vue').useSlots
   const useTemplateRef: typeof import('vue').useTemplateRef
   const useTheme: typeof import('../../app/stores/useTheme').default
-  const useThemeStore: typeof import('../../app/stores/useThemeStore').default
   const useToast: typeof import('../../app/plugins/useToast').default
   const userStore: typeof import('../../app/stores/userStore').default
   const watch: typeof import('vue').watch

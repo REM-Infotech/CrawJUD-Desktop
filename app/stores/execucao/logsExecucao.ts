@@ -1,3 +1,5 @@
+import MessageArquivo from "@/components/MessageArquivo.vue";
+
 export default defineStore(
   "logsExecucao",
   () => {
@@ -44,7 +46,6 @@ export default defineStore(
 
       static async download_execucao(id_execucao: string) {
         const { show, hide } = useLoad();
-        botNamespace.emit("bot_stop", { id_execucao: id_execucao });
         show();
         try {
           const endpoint = `/bot/execucoes/${id_execucao}/download`;
@@ -66,7 +67,8 @@ export default defineStore(
               });
             }
           }
-        } catch {
+        } catch (err) {
+          console.log(err);
           toast.show({
             title: "Erro",
             body: "Não foi possivel baixar execução",

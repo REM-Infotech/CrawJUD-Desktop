@@ -127,6 +127,7 @@ export default defineStore(
   {
     persist: {
       storage: localStorage,
+      pick: ["listagemBots"],
     },
   },
 );

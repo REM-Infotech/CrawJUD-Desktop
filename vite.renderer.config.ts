@@ -25,6 +25,9 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./app", import.meta.url)),
     },
   },
+  build: {
+    sourcemap: true,
+  },
   plugins: [
     vue(),
     vueJsx(),
