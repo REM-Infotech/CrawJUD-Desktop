@@ -31,3 +31,10 @@ interface Window {
     showFile: (filePath: string) => Promise<void>;
   };
 }
+
+interface ToastContent {
+  title: string;
+  body?: string;
+  timeout?: number;
+  slots?: Record<string, Component>;
+}

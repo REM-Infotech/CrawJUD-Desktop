@@ -1,10 +1,16 @@
 export default defineStore(
   "useToastStore",
   () => {
-    const toastContent = reactive({ title: "", body: "", timeout: 0 });
+    const toastContent = reactive<ToastContent>({
+      title: "",
+      body: "",
+      timeout: 0,
+      slots: {},
+    });
+
     const showToast = ref(false);
     function show(
-      options: { title: string; body: string; timeout: number } = {
+      options: ToastContent = {
         title: "",
         body: "",
         timeout: 1000,
@@ -15,6 +21,9 @@ export default defineStore(
         toastContent.title = options.title;
         toastContent.body = options.body;
         toastContent.timeout = options.timeout;
+        if (options.slots) {
+          toastContent.slots = options.slots;
+        }
       }
     }
 

@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const { Arquivo } = storeToRefs(useExecutionStore());
+defineProps({
+  filePath: {
+    type: String,
+    required: false,
+  },
+});
+const { Arquivo } = storeToRefs(logsExecucao());
 
 async function verArquivo(ev: PointerEvent) {
   ev.preventDefault();

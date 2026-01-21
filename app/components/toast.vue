@@ -12,7 +12,12 @@ const { showToast, toastContent } = storeToRefs(useToast);
         {{ toastContent.title }}
       </template>
       <template #default>
-        {{ toastContent.body }}
+        <div v-if="toastContent.slots">
+          <component :is="toastContent.slots.default" />
+        </div>
+        <div v-else>
+          {{ toastContent.body }}
+        </div>
       </template>
     </BToast>
   </div>

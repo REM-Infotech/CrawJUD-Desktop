@@ -60,11 +60,11 @@ export default defineStore(
                 nome: response.data.file_name,
                 path: result,
               };
-              const _render = h(MessageArquivo, { filePath: result as string });
+              const render = h(MessageArquivo, { filePath: result as string });
               toast.show({
                 title: "Info",
-                body: "ok",
                 timeout: 1500,
+                slots: { default: render },
               });
             }
           }
@@ -97,6 +97,7 @@ export default defineStore(
     });
 
     return {
+      Arquivo,
       logs,
       execucao,
       mountExecucao,
