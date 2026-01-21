@@ -4,7 +4,6 @@ export default defineStore(
     const execucoesRef = ref<Execucoes>([]);
     const sistemaQueryRef = ref("");
     const idExecucaoQueryRef = ref("");
-    const { execucaoRef } = storeToRefs(logsExecucao());
     const idExecucaoQuery = computed(() => idExecucaoQueryRef.value);
     const sistemaQuery = computed(() => sistemaQueryRef.value);
 
@@ -26,15 +25,6 @@ export default defineStore(
           if (response.status === 200) {
             const execucoes = [...response.data.listagem];
             execucoesRef.value = execucoes;
-            if (idExecucaoQueryRef.value) {
-              const exec = execucoesRef.value.filter(
-                (item) => item.id_execucao === idExecucaoQueryRef.value,
-              );
-
-              if (exec.length === 1) {
-                execucaoRef.value = exec[0];
-              }
-            }
           }
         } catch {
           //

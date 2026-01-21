@@ -15,11 +15,11 @@ const valores = computed(() => {
     (item) => item.message_type === "error" && item.row > 0,
   );
   const item = (mensagens.reverse()[0] as Message) || {};
-  const sucessos = item.sucessos || sucessos0.length;
-  const erros = item.erros || erros0.length;
+  const sucessos = sucessos0.length;
+  const erros = erros0.length;
   const restantes = item.restantes || 0;
   const total = item.total || 0;
-
+  console.log(mensagens);
   return {
     sucessos: sucessos,
     erros: erros,

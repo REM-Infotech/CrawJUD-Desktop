@@ -17,6 +17,7 @@ const {
   seed,
 } = storeToRefs(botstore);
 
+const { mountExecucao } = logsExecucao();
 const { idExecucaoQueryRef } = storeToRefs(execucoesStore());
 
 const FormSetups = {
@@ -82,6 +83,15 @@ async function handleSubmit(e: Event) {
     message.title = response.data.title;
 
     idExecucaoQueryRef.value = response.data.id_execucao;
+
+    await mountExecucao({
+      id_execucao: response.data.id_execucao,
+      Id: 0,
+      bot: "",
+      status: "Inicializando",
+      data_inicio: "",
+      data_fim: "",
+    });
 
     await sleep(500);
     router.push({

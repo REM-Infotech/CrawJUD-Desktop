@@ -41,7 +41,12 @@ export default defineStore(
         execucaoRef.value = exec;
         await sleep(1000);
         SetExec.value = false;
-        botNamespace.connect();
+        botNamespace.emit(
+          "join_room",
+          { room: execucaoRef.value?.id_execucao },
+          LogManager.pushLogs,
+        );
+        if (!botNamespace.connected) botNamespace.connect();
       }
 
       static async download_execucao(id_execucao: string) {
@@ -85,16 +90,7 @@ export default defineStore(
     const mountExecucao = LogManager.mountExecucao;
     const encerrar_execucao = LogManager.encerrarExecucao;
     const download_execucao = LogManager.download_execucao;
-    const pushLogs = LogManager.pushLogs;
     botNamespace.on("logbot", pushLog);
-
-    botNamespace.on("connect", () => {
-      botNamespace.emit(
-        "join_room",
-        { room: execucaoRef.value?.id_execucao },
-        pushLogs,
-      );
-    });
 
     return {
       Arquivo,
