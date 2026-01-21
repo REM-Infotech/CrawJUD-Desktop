@@ -15,7 +15,7 @@ const { showToast, toastContent } = storeToRefs(useToast);
         <div v-if="toastContent.slots">
           <component :is="toastContent.slots.default" />
         </div>
-        <div v-else>
+        <div>
           {{ toastContent.body }}
         </div>
       </template>
