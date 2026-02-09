@@ -6,7 +6,7 @@ const { showToast, toastContent } = storeToRefs(useToast);
 </script>
 
 <template>
-  <div class="toast-container position-fixed p-3 top-0 end-0">
+  <div class="toast-container position-fixed p-3 top-0 end-0 mt-5">
     <BToast v-model="toastContent.timeout">
       <template #title>
         {{ toastContent.title }}
