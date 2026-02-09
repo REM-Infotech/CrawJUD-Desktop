@@ -35,9 +35,9 @@ const hoveredExecId = computed(() => hoveredExecIdRef.value as number);
           class="d-flex justify-content-between align-items-start"
           active-class="active"
           v-for="exec in execucoes"
-          :key="exec.Id"
-          :active="hoveredExecId === exec.Id"
-          @mouseenter="hoveredExecIdRef = exec.Id"
+          :key="exec.id"
+          :active="hoveredExecId === exec.id"
+          @mouseenter="hoveredExecIdRef = exec.id"
           @mouseleave="hoveredExecIdRef = ''"
           @click="
             async (e: Event) => {

@@ -29,7 +29,7 @@ type ConfigForm =
   | "proc_parte";
 
 type Execucao = {
-  Id: number;
+  id: number;
   bot: string;
   id_execucao: string;
   status: StatusBot;
@@ -40,7 +40,7 @@ type Execucao = {
 type Execucoes = Execucao[];
 
 interface BotCrawJUD {
-  Id: number;
+  id: number;
   configuracao_form: ConfigForm;
   display_name: string;
   sistema: sistemasRobos;

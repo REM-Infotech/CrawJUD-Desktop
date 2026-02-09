@@ -74,7 +74,7 @@ async function handleSubmit(e: Event) {
   const formData: FormbotData = Object.fromEntries(list_items);
 
   formData["configuracao_form"] = String(selectedBot.value?.configuracao_form);
-  formData["bot_id"] = String(selectedBot.value?.Id);
+  formData["bot_id"] = String(selectedBot.value?.id);
   formData["seeduploadedfiles"] = seed.value;
   formData["sid_filesocket"] = seed.value;
   try {
@@ -87,7 +87,7 @@ async function handleSubmit(e: Event) {
 
     await mountExecucao({
       id_execucao: response.data.id_execucao,
-      Id: 0,
+      id: 0,
       bot: "",
       status: "Inicializando",
       data_inicio: "",
