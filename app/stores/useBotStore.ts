@@ -60,7 +60,8 @@ export default defineStore(
         const response = await api.get<BotPayload>("/bot/listagem");
 
         if (response.data && response.data.listagem) {
-          listagemBots.value = response.data.listagem;
+          const bots = [...response.data.listagem];
+          listagemBots.value = bots;
         }
       } catch {}
     }
