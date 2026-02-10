@@ -58,11 +58,11 @@ export default defineStore(
     async function load() {
       try {
         const response = await api.get<BotPayload>("/bot/listagem");
+        if (!(response.data && response.data.listagem)) return;
 
-        if (response.data && response.data.listagem) {
-          const bots = [...response.data.listagem];
-          listagemBots.value = bots;
-        }
+        const bots = [...response.data.listagem];
+        listagemBots.value = bots;
+        //
       } catch {}
     }
 
