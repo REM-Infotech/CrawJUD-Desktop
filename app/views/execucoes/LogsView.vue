@@ -34,9 +34,10 @@ watch(
     if (!newVal) return;
 
     const el = newVal as HTMLElement;
+    const scrollContainer = el.closest(".body-logs-execucao");
 
     await nextTick();
-    const scrollContainer = el.closest(".body-logs-execucao");
+
     if (scrollContainer) {
       await new Promise((resolve) => setTimeout(resolve, 500));
       el.scrollIntoView({
