@@ -5,7 +5,7 @@
 @import "modal-app.css";
 :root {
   /* Maroon Palette */
-
+  --color-maroon-40: #a160c2;
   --color-maroon-50: #b02cf4;
   --color-maroon-100: #ae27f1;
   --color-maroon-200: #9f23de;
@@ -77,7 +77,7 @@
   --color-secondary: #480a36;
   --color-accent: #86226d;
 
-  --bg-card: var(--color-maroon-600);
+  --bg-card: var(--color-maroon-40);
   --bg-primary: var(--color-flirt-200);
   --bg-secondary: color-mix(
     in srgb,
