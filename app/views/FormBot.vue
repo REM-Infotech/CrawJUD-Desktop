@@ -117,14 +117,13 @@ async function handleSubmit(e: Event) {
       centered
       @hide="formBotModal = false"
       v-model="formBotModal"
+      no-close-on-backdrop
+      :no-header-close="false"
+      :title="selectedBot?.display_name"
     >
-      <template #header>
-        <span class="fw-bold fs-4">
-          {{ selectedBot?.display_name }}
-        </span>
-      </template>
+      <template #header> </template>
       <template #default>
-        <div style="min-height: 380px; max-height: 400px">
+        <div style="min-height: 380px">
           <component :is="FormComponent" />
         </div>
       </template>
