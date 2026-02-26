@@ -8,15 +8,9 @@ const itemLog: elementRef = ref(null);
 
 const valores = computed(() => {
   const mensagens = [...logs.value];
-  const sucessos0 = mensagens.filter(
-    (item) => item.message_type === "success" && item.row > 0,
-  );
-  const erros0 = mensagens.filter(
-    (item) => item.message_type === "error" && item.row > 0,
-  );
   const item = (mensagens.reverse()[0] as Message) || {};
-  const sucessos = sucessos0.length;
-  const erros = erros0.length;
+  const sucessos = item.sucessos || 0;
+  const erros = item.erros || 0;
   const restantes = item.restantes || 0;
   const total = item.total || 0;
   console.log(mensagens);
