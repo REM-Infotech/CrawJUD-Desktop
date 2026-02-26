@@ -52,6 +52,9 @@ declare module 'vue' {
     Toast: typeof import('./../../app/components/toast.vue')['default']
     Xlsxinput: typeof import('./../../app/components/inputs/xlsxinput.vue')['default']
   }
+  export interface GlobalDirectives {
+    vBPopover: typeof import('bootstrap-vue-next/directives/BPopover')['vBPopover']
+  }
 }
 
 // For TSX support

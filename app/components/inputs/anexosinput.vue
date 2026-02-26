@@ -24,15 +24,10 @@ class MultipleFileUploader {
 
   async uploadFiles(files: File[]) {
     this.fSocket.connect();
-
     Progress.value = {};
     formBot.value.Anexos = [];
     isUploadFile.value = true;
-
     await Promise.all(files.map((f) => this.uploadFile(f)));
-
-    seedRef.value = crypto.randomUUID().toString();
-
     isUploadFile.value = false;
     this.fSocket.disconnect();
   }
@@ -104,7 +99,7 @@ class MultipleFileUploader {
 
     while (this.getProgress(f).porc !== target) {
       ((Progress.value[f.name] as statProgress).porc as number) += step;
-      await new Promise((r) => setTimeout(r, 50));
+      await new Promise((r) => setTimeout(r, 35));
     }
   }
 }

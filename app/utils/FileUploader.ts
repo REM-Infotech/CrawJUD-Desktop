@@ -12,12 +12,11 @@ function FileUploader() {
       this.chunkSize = 10240 * 100;
       this.fileSocket = socketio.socket("/files");
       this.multipleFile = false;
-      this.fileSocket.connect();
     }
 
     public async uploadFile(file: File): Promise<void> {
       const { currentUpload, isUploadFile } = storeToRefs(useBotStore());
-
+      this.fileSocket.connect();
       this.totalSent = 0;
 
       isUploadFile.value = true;
@@ -25,6 +24,7 @@ function FileUploader() {
 
       await this.uploadInChunks(file, file.size);
       await this.clearProgressBar(`Arquivo ${file.name} carregado!`);
+      this.fileSocket.disconnect();
       await new Promise((resolve) => setTimeout(resolve, 500));
     }
     public async uploadMultipleFile(FileList: File[]): Promise<void> {
@@ -68,7 +68,7 @@ function FileUploader() {
       file: File,
       arrayBuffer: ArrayBuffer,
       currentSize: number,
-      seed: string
+      seed: string,
     ) {
       await new Promise<void>((resolve, reject) => {
         setTimeout(() => {
@@ -85,7 +85,7 @@ function FileUploader() {
             (err: Error | null) => {
               if (err) reject(err);
               else resolve();
-            }
+            },
           );
         }, 250); // delay envio de cada chunk
       });
