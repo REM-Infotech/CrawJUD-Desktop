@@ -9,8 +9,16 @@ watch(
     if (newValue) {
       await fileUploader.uploadFile(newValue);
     }
-  }
+  },
 );
+
+const openFileXlsx = async (e: Event) => {
+  e.preventDefault();
+  const file = await fileDialog.openFileXlsx();
+  if (file) {
+    formBot.value.Xlsx = file;
+  }
+};
 </script>
 
 <template>
@@ -23,7 +31,7 @@ watch(
       <BFormGroup label="Planilha de execução" class="mb-3">
         <BFormFile
           :disabled="isUpload"
-          @click="botstore.openFileXlsx"
+          @click="openFileXlsx"
           v-model="formBot.Xlsx"
           required
         />

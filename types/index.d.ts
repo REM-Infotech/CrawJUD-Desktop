@@ -38,3 +38,11 @@ interface ToastContent {
   timeout?: number;
   slots?: Record<string, Component>;
 }
+
+type statProgress = {
+  porc?: number; // porcentagem
+  sent?: number; // total enviado
+};
+interface ProgressoArquivos {
+  [key: string]: statProgress;
+}

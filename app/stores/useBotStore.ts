@@ -23,11 +23,11 @@ export default defineStore(
     const queryLower = computed(() => queryBot.value.toLowerCase());
     const formBot = reactive<{
       Xlsx: File | null;
-      Anexos: File[] | null;
+      Anexos: File[];
       credencial: number | null;
     }>({
       Xlsx: null,
-      Anexos: null,
+      Anexos: [],
       credencial: null,
     });
 
@@ -38,22 +38,6 @@ export default defineStore(
           item.sistema.toLowerCase().includes(queryLower.value),
       ),
     );
-
-    const openFileXlsx = async (e: Event) => {
-      e.preventDefault();
-      const file = await fileDialog.openFileXlsx();
-      if (file) {
-        formBot.Xlsx = file;
-      }
-    };
-
-    const openFiles = async (e: Event) => {
-      e.preventDefault();
-      const files = await fileDialog.openFiles();
-      if (files) {
-        formBot.Anexos = files;
-      }
-    };
 
     async function load() {
       try {
@@ -96,7 +80,7 @@ export default defineStore(
 
     watch(formBotModal, (newValue) => {
       if (!newValue) {
-        formBot.Anexos = null;
+        formBot.Anexos = [];
         formBot.Xlsx = null;
         formBot.credencial = null;
         credenciais.value = [{ value: null, text: "Carregando" }];
@@ -105,6 +89,7 @@ export default defineStore(
     });
 
     return {
+      seedRef,
       fileUploader,
       confirmForm,
       isUpload,
@@ -117,8 +102,6 @@ export default defineStore(
       listagem,
       queryBot,
       load,
-      openFileXlsx,
-      openFiles,
       formBot,
       seed,
       credenciais,

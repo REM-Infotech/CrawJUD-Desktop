@@ -112,7 +112,7 @@ async function handleSubmit(e: Event) {
   <form>
     <BModal
       footer-class="d-flex gap-3 flex-column w-100 align-items-start"
-      size="lg"
+      size="xl"
       body-class="overflow-y-auto"
       centered
       @hide="formBotModal = false"
