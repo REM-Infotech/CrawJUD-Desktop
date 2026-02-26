@@ -54,7 +54,17 @@ async function handleSubmit(e: Event) {
   load.show();
 
   const list_items = Object.entries(formBot.value)
-    .filter(([_, value]) => value !== null)
+    .filter(([_, value]) => {
+      if (value !== null) {
+        if (Array.isArray(value) && value.length > 0) {
+          return true;
+        } else if (!Array.isArray(value)) {
+          return true;
+        }
+        return false;
+      }
+      return false;
+    })
     .map((item) => {
       const key = item[0].toLowerCase();
       const value = item[1];
@@ -72,7 +82,7 @@ async function handleSubmit(e: Event) {
     });
 
   const formData: FormbotData = Object.fromEntries(list_items);
-
+  console.log(formData);
   formData["configuracao_form"] = String(selectedBot.value?.configuracao_form);
   formData["bot_id"] = String(selectedBot.value?.id);
   formData["seeduploadedfiles"] = seed.value;
