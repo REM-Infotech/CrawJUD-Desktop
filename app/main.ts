@@ -25,7 +25,7 @@ function createWindow() {
       nodeIntegration: false,
       sandbox: true,
       contextIsolation: true,
-      devTools: true,
+      devTools: app.isPackaged,
       preload: path.join(__dirname, "preload.js"),
     },
   });
