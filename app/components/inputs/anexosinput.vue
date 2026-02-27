@@ -30,6 +30,7 @@ class MultipleFileUploader {
     await Promise.all(files.map((f) => this.uploadFile(f)));
     isUploadFile.value = false;
     this.fSocket.disconnect();
+    Progress.value = {};
   }
   private async uploadFile(f: File): Promise<"ok"> {
     formBot.value.Anexos.push(f);
