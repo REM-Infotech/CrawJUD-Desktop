@@ -13,7 +13,6 @@ const valores = computed(() => {
   const erros = item.erros || 0;
   const restantes = item.restantes || 0;
   const total = item.total || 0;
-  console.log(mensagens);
   return {
     sucessos: sucessos,
     erros: erros,

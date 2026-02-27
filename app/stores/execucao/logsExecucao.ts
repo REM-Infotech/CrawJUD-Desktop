@@ -73,8 +73,7 @@ export default defineStore(
               });
             }
           }
-        } catch (err) {
-          console.log(err);
+        } catch {
           toast.show({
             title: "Erro",
             body: "Não foi possivel baixar execução",

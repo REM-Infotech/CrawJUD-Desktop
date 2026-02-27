@@ -82,7 +82,6 @@ async function handleSubmit(e: Event) {
     });
 
   const formData: FormbotData = Object.fromEntries(list_items);
-  console.log(formData);
   formData["configuracao_form"] = String(selectedBot.value?.configuracao_form);
   formData["bot_id"] = String(selectedBot.value?.id);
   formData["seeduploadedfiles"] = seed.value;
@@ -113,7 +112,7 @@ async function handleSubmit(e: Event) {
   }
 
   load.hide();
-  toast.show(message);
+  toast.create(message);
   formBotModal.value = false;
 }
 </script>
