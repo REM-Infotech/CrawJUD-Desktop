@@ -24,11 +24,16 @@ class MultipleFileUploader {
 
   async uploadFiles(files: File[]) {
     this.fSocket.connect();
+
     Progress.value = {};
     formBot.value.Anexos = [];
+
     isUploadFile.value = true;
+
     await Promise.all(files.map((f) => this.uploadFile(f)));
+
     isUploadFile.value = false;
+
     this.fSocket.disconnect();
     Progress.value = {};
   }
