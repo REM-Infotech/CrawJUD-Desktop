@@ -26,6 +26,9 @@ export default defineStore(
       }
 
       static async pushLog(msg: Message) {
+        const msgTime = new Date(msg.time_message);
+        msg.time_message = msgTime.toLocaleTimeString();
+
         logsRef.value = [...logsRef.value, msg];
         await sleep(500);
       }
