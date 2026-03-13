@@ -20,9 +20,7 @@ export default defineStore(
       }
 
       static async pushLogs(data: Message[]) {
-        for (const message of data) {
-          LogManager.pushLog(message);
-        }
+        logsRef.value = [...data];
       }
 
       static async pushLog(msg: Message) {
