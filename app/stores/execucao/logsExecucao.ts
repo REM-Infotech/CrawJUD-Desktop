@@ -42,11 +42,8 @@ export default defineStore(
         execucaoRef.value = exec;
         await sleep(1000);
         SetExec.value = false;
-        botNamespace.emit(
-          "join_room",
-          { room: execucaoRef.value?.id_execucao },
-          LogManager.pushLogs,
-        );
+        const data = { room: execucaoRef.value?.id_execucao };
+        botNamespace.emit("join_room", data, LogManager.pushLogs);
         if (!botNamespace.connected) botNamespace.connect();
       }
 
