@@ -25,10 +25,18 @@ export default defineStore(
       Xlsx: File | null;
       Anexos: File[];
       credencial: number | null;
+      nome_parte: string | null;
+      documento_parte: string | null;
+      data_inicio: string | null;
+      data_fim: string | null;
     }>({
       Xlsx: null,
       Anexos: [],
       credencial: null,
+      data_inicio: null,
+      data_fim: null,
+      nome_parte: null,
+      documento_parte: null,
     });
 
     const listagem = computed<BotCrawJUD[]>(() =>

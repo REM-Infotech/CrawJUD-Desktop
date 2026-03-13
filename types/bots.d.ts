@@ -26,7 +26,8 @@ type ConfigForm =
   | "multiple_files"
   | "only_auth"
   | "only_file"
-  | "proc_parte";
+  | "proc_parte"
+  | "busca_processo";
 
 type Execucao = {
   id: number;

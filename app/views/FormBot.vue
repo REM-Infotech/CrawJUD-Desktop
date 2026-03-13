@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import BuscaProcessual from "./bot/BuscaProcessual.vue";
 import FileAuth from "./bot/FileAuth.vue";
 import MultipleFiles from "./bot/MultipleFiles.vue";
+
 const { botNamespace } = loggerStore();
 
 const botstore = useBotStore();
@@ -27,6 +29,7 @@ const FormSetups = {
   multiple_files: MultipleFiles,
   only_file: MultipleFiles,
   proc_parte: MultipleFiles,
+  busca_processo: BuscaProcessual,
 };
 
 const submitDesabilitado = computed(
@@ -54,11 +57,13 @@ async function handleSubmit(e: Event) {
   load.show();
 
   const list_items = Object.entries(formBot.value)
-    .filter(([_, value]) => {
+    .filter(([key, value]) => {
       if (value !== null) {
         if (Array.isArray(value) && value.length > 0) {
           return true;
         } else if (!Array.isArray(value)) {
+          return true;
+        } else if (key === "data_inicio" || key === "data_fim") {
           return true;
         }
         return false;
@@ -76,6 +81,17 @@ async function handleSubmit(e: Event) {
       if (Array.isArray(value) && value.every((it) => it instanceof File)) {
         const anexo = value.map((file: File) => file.name);
         return [key, anexo];
+      }
+
+      if (key === "data_inicio" || key === "data_fim") {
+        const [y, m, d] = String(value).split("-").map(Number);
+        const dt = new Date(y as number, (m as number) - 1, d as number);
+
+        const day = String(dt.getDate()).padStart(2, "0");
+        const month = String(dt.getMonth() + 1).padStart(2, "0");
+
+        const strftime = `${day}/${month}/${dt.getFullYear()}`;
+        return [key, strftime];
       }
 
       return [key, String(value)];

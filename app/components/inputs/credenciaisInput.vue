@@ -5,9 +5,7 @@ const { formBot, credenciais } = storeToRefs(botstore);
 
 <template>
   <BFormGroup label="Credencial" class="mb-3">
-    <BFormSelect
-      :options="credenciais"
-      v-model="formBot.credencial"
-    ></BFormSelect>
+    <BFormSelect :options="credenciais" v-model="formBot.credencial">
+    </BFormSelect>
   </BFormGroup>
 </template>
